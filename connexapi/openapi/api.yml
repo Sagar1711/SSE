@@ -1,0 +1,85 @@
+swagger: "2.0"
+info:
+  description: "Swagger"
+  title: "Swagger Trial"
+  version: "1.0"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /random:
+    get:
+      summary: "Add a new pet to the store"
+      description: ""
+      responses:
+        "200":
+          description: "random stuff"
+      operationId: "connexapi.API.root.return_random"
+  /process:
+    get:
+      summary: "Get Process Details"
+      description: ""
+      responses:
+        "200":
+          description: "Get Process data"
+      operationId: "connexapi.API.process.get_process"
+    post:
+      summary: "Add a new process"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/process"
+      responses:
+        "201":
+          description: "Add a new process entry"
+      operationId: "connexapi.API.process.add_process"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+    put:
+      summary: "Update Process Status"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/status"
+      responses:
+        "201":
+          description: "new process status"
+      operationId: "connexapi.API.process.update_status"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+
+definitions:
+  process:
+    type: "object"
+    required:
+    - "name"
+    - "status"
+    properties:
+      name:
+        type: "string"
+      status:
+        type: "string"
+  status:
+    type: "object"
+    required:
+    - "name"
+    - "status"
+    properties:
+      name:
+        type: "string"
+      status:
+        type: "string"
