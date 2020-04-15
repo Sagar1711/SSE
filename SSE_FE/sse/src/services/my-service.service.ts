@@ -11,7 +11,7 @@ export class MyServiceService {
   constructor(private _zone: NgZone, private _sseService: SseService, private _http: HttpClient) { }
 
   getServerSentEvents(url: string) {
-    return Observable.create(observer => {
+    return new Observable(observer => {
       const eventSource = this._sseService.getEventSource(url);
       eventSource.onopen = event => {
         console.log("Connection Open");
@@ -22,8 +22,12 @@ export class MyServiceService {
       };
 
       eventSource.onerror = error => {
-        eventSource.close();
-        observer.error(error);
+        if (eventSource.readyState === 0) {
+          eventSource.close();
+          observer.complete();
+        } else {
+          observer.error('Eventsource error: ' + error);
+        }
       };
       
     });
