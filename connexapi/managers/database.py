@@ -15,5 +15,3 @@ def init_db():
     session_factory = sessionmaker(bind=engine)
     session = scoped_session(session_factory)
     return session
-
-

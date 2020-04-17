@@ -10,7 +10,7 @@ export class MyServiceService {
 
   constructor(private _zone: NgZone, private _sseService: SseService, private _http: HttpClient) { }
 
-  getServerSentEvents(url: string) {
+  getServerSentEvents(url: string): Observable<any> {
     return new Observable(observer => {
       const eventSource = this._sseService.getEventSource(url);
       eventSource.onopen = event => {
