@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy import event
 from queue import Queue
 import json
-import gevent
 
 
 dataQueue = Queue()

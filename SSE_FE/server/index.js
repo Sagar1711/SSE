@@ -1,7 +1,7 @@
 const express = require('express');
 const parser = require(`body-parser`);
-const cors = require('cors')
-const app = express()
+const cors = require('cors');
+const app = express();
 const EventEmitter = require(`events`);
 
 const Stream = new EventEmitter();
@@ -41,7 +41,6 @@ for (let index = 0; index < array.length; index++) {
         Stream.emit('push', 'message', {msg: element});
     }, (index+1)*6000);
 }
-
 
 app.listen(4000);
 

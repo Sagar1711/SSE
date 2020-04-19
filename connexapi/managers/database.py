@@ -13,6 +13,7 @@ def init_db():
     Base.metadata.create_all(engine)
     return engine
 
+
 def get_session(engine):
     session_factory = sessionmaker(bind=engine)
     session = scoped_session(session_factory)
