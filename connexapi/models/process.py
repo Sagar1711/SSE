@@ -29,8 +29,10 @@ def receive_after_update(mapper, connection, target):
         data['event'] = 'close'
     else:
         data['event'] = 'open'
-    from connexapi.APP.sse import notify
-    notify(data)
+    # from connexapi.APP.sse import notify
+    from connexapi.APP.socketApi import push_updated
+    # notify(data)
+    push_updated(data)
     # dataQueue.put(data)
 
 
