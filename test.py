@@ -7,7 +7,7 @@ def target_func(status):
         "name": "process_a",
         "status": status
     }
-    req.put('http://localhost:3000/process', json=data, verify=False)
+    req.put('http://172.31.0.20:3000/process', json=data, verify=False)
 
 def call_update():
     th = []

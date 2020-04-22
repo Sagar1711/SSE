@@ -30,7 +30,8 @@ export class AppSseComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this._socketService.getMessages().subscribe(
-      (data) => console.log(data)
+      (data) => console.log(">>", data),
+      (error) => console.log(">>>", error)
     );
   }
 
